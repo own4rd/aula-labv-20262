@@ -16,6 +16,9 @@ public class Account {
 
     private String password;
 
+    public Account() {
+    }
+
     public Account(String email, String password) {
         this.email = email;
         this.password = password;
