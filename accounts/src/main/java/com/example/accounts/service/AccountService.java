@@ -8,7 +8,9 @@ import java.util.UUID;
 public interface AccountService {
 
     UUID create(Account account);
-    void update(Account account, UUID uuid);
+    Account update(Account account, UUID uuid);
     List<Account> findAll();
+    Account findById(UUID uuid);
+    void delete(UUID uuid);
 
 }
