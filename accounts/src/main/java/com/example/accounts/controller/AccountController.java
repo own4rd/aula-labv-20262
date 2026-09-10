@@ -25,16 +25,6 @@ public class AccountController {
         this.accountMapper = accountMapper;
     }
 
-    @PostMapping
-    public ResponseEntity<Void> create(@RequestBody @Valid CreateAccountRequestDto accountDto) {
-        Account account = accountMapper.fromCreateAccountRequestDtoToEntity(accountDto);
-        UUID uuid = accountService.create(account);
-        URI location = URI.create(
-                "/accounts/" + uuid);
-
-        return ResponseEntity.created(location).build();
-    }
-
     @GetMapping
     public ResponseEntity<List<AccountResponseDto>> list() {
         List<Account> accounts = accountService.findAll();

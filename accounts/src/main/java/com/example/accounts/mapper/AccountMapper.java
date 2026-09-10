@@ -11,26 +11,34 @@ import java.util.List;
 @Component
 public class AccountMapper {
 
-    public Account fromCreateAccountRequestDtoToEntity(CreateAccountRequestDto accountDto) {
-        return new Account(
-                accountDto.email(),
-                accountDto.password()
-        );
+    public Account fromCreateAccountRequestDtoToEntity(
+            CreateAccountRequestDto accountDto
+    ) {
+        return Account.builder()
+                .email(accountDto.email())
+                .password(accountDto.password())
+                .build();
     }
 
-    public Account fromUpdateAccountRequestDtoToEntity(UpdateAccountRequestDto accountDto) {
-        return new Account(
-                accountDto.email(),
-                accountDto.password()
-        );
+    public Account fromUpdateAccountRequestDtoToEntity(
+            UpdateAccountRequestDto accountDto
+    ) {
+        return Account.builder()
+                .email(accountDto.email())
+                .password(accountDto.password())
+                .build();
     }
 
     public AccountResponseDto fromAccountToDto(Account account) {
-        return new AccountResponseDto(account.getId(), account.getEmail());
+        return new AccountResponseDto(
+                account.getId(),
+                account.getEmail()
+        );
     }
 
     public List<AccountResponseDto> fromAccountToDto(List<Account> accounts) {
         return accounts.stream()
-                .map(this::fromAccountToDto).toList();
+                .map(this::fromAccountToDto)
+                .toList();
     }
 }
